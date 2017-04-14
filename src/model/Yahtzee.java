@@ -42,6 +42,8 @@ public class Yahtzee {
                 if(i < 2) {
                     System.out.print("\nEnter a number: ");
                     String[] n = reader.nextLine().split(",");
+                    //break loop if n
+                    if(n[0].equals("n")) break;
                     //Set each dice as rollable
                     logic.setDiceRollable();
                     //Set specific dice as unrollable
@@ -58,12 +60,15 @@ public class Yahtzee {
                 Allow User to pick which category to put there win in
             */
             ScoreLogic calc = new ScoreLogic();
-
+            //Get all scores from current dice roll
             LinkedHashMap<Category, Integer> scores = calc.generateScores(logic.getDice());
             System.out.println("\n\nSCORES:");
             for(Category each : scores.keySet()){
                 System.out.println(each + " : " + scores.get(each));
             }
+
+
+
 
         }
     }

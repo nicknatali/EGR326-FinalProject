@@ -4,6 +4,12 @@ public abstract class Player {
     protected String name;
     protected int points = 0;
     protected boolean isTurn;
+    protected ScoreCard scoreCard = new ScoreCard();
+
+
+
+
+    public abstract boolean makeMove();
 
     public boolean isTurn() {
         return isTurn;
@@ -12,8 +18,6 @@ public abstract class Player {
     public void setTurn(boolean turn) {
         isTurn = turn;
     }
-
-    ScoreCard scoreCard = new ScoreCard();
 
     protected Player(String name){
         this.name = name;

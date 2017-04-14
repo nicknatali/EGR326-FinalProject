@@ -6,6 +6,11 @@ import strategy.StrategyType;
 public class Computer extends Player{
     private Strategy strategy;
 
+    @Override
+    public boolean makeMove() {
+        return false;
+    }
+
     public Computer(String name) { super(name); }
     public Computer(String name, Strategy strategy){
         super(name);
