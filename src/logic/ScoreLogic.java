@@ -8,11 +8,11 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class ScoreLogic {
+    LinkedHashMap<Category, Integer> scores = new LinkedHashMap<>();
 
     public LinkedHashMap<Category, Integer> generateScores(Die[] dice){
-        LinkedHashMap<Category, Integer> scores = new LinkedHashMap<>();
         //Generate Scores for upper half of score card
-        for(int i = 1; i <= 6; i++) scores.put(Category.fromInteger(i), calculateLowerScores(dice, i));
+        for(int i = 0; i < 6; i++) scores.put(Category.fromInteger(i), calculateLowerScores(dice, i + 1));
         //Generate scores for lower half of score card
         scores.put(Category.THREEOFAKIND, calculateThreeOfAKind(dice));
         scores.put(Category.FOUROFAKIND, calculateFourOfAKind(dice));
@@ -154,7 +154,7 @@ public class ScoreLogic {
         for(int i = 0; i < keys.length - 1; i++){
             if(keys[i+1] - keys[i] == 1)
                 totalInOrder++;
-            else
+            else if(i < keys.length-2)
                 totalInOrder = 1;
         }
         //Check to see if a straight has been achieved

@@ -1,10 +1,14 @@
 package view;
 
+
+import model.YahtzeeGame;
+
 import java.util.Observable;
 
 public class PaintedView extends View{
-    public PaintedView(){
 
+    public PaintedView(YahtzeeGame game){
+        super(game);
     }
 
     public View createView(){
@@ -15,4 +19,5 @@ public class PaintedView extends View{
     public void update(Observable o, Object arg) {
 
     }
+
 }

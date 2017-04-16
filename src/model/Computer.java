@@ -6,8 +6,11 @@ import strategy.StrategyType;
 public class Computer extends Player{
     private Strategy strategy;
 
-    @Override
-    public boolean makeMove() {
+    public boolean reRoll() {
+        return false;
+    }
+
+    public boolean chooseCategory() {
         return false;
     }
 

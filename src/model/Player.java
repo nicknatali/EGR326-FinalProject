@@ -4,12 +4,26 @@ public abstract class Player {
     protected String name;
     protected int points = 0;
     protected boolean isTurn;
+    protected int wins;
+    protected int losses;
     protected ScoreCard scoreCard = new ScoreCard();
 
 
+    public int getWins() {
+        return wins;
+    }
 
+    public void addWin() {
+        wins++;
+    }
 
-    public abstract boolean makeMove();
+    public int getLosses() {
+        return losses;
+    }
+
+    public void addLoss() {
+        losses++;
+    }
 
     public boolean isTurn() {
         return isTurn;
@@ -47,9 +61,17 @@ public abstract class Player {
         this.scoreCard = scoreCard;
     }
 
-    public void calculateScore(){
-        //TODO:
+    public int calculateScore(){
+        points = 0;
+        for(int each : scoreCard.getScores().values()){
+            points += each;
+        }
+        return points;
     }
 
-    public void reset() { points = 0; }
+    public void reset() {
+        points = 0;
+        wins = 0;
+        losses = 0;
+    }
 }

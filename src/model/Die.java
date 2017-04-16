@@ -24,7 +24,7 @@ public class Die {
 
     public int rollDie(){
         Random random = new Random();
-        value = random.nextInt(5)+1;
+        value = random.nextInt(6)+1;
         return value;
     }
 

@@ -9,7 +9,7 @@ public class TestMethods {
     @Test
     public void ScoreLogicTest(){
         ScoreLogic logic = new ScoreLogic();
-        Die[] dice = {new Die(3), new Die(4), new Die(2), new Die(6), new Die(3)};
+        Die[] dice = {new Die(2), new Die(4), new Die(3), new Die(1), new Die(4)};
         //Get all scores from current dice roll
         LinkedHashMap<Category, Integer> scores = logic.generateScores(dice);
         //Print scores

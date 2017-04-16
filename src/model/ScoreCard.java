@@ -6,31 +6,33 @@ public class ScoreCard {
     private LinkedHashMap<Category, Integer> scores = new LinkedHashMap<>();
 
     public ScoreCard(){
-        scores.put(Category.ACES, null);
-        scores.put(Category.TWOS, null);
-        scores.put(Category.THREES, null);
-        scores.put(Category.FOURS, null);
-        scores.put(Category.FIVES, null);
-        scores.put(Category.SIXES, null);
-        scores.put(Category.THREEOFAKIND, null);
-        scores.put(Category.FOUROFAKIND, null);
-        scores.put(Category.FULLHOUSE, null);
-        scores.put(Category.SMALLSTRAIGHT, null);
-        scores.put(Category.LARGESTRAIGHT, null);
-        scores.put(Category.YAHTZEE, null);
-        scores.put(Category.CHANCE, null);
+        scores.put(Category.ACES, -1);
+        scores.put(Category.TWOS, -1);
+        scores.put(Category.THREES, -1);
+        scores.put(Category.FOURS, -1);
+        scores.put(Category.FIVES, -1);
+        scores.put(Category.SIXES, -1);
+        scores.put(Category.THREEOFAKIND, -1);
+        scores.put(Category.FOUROFAKIND, -1);
+        scores.put(Category.FULLHOUSE, -1);
+        scores.put(Category.SMALLSTRAIGHT, -1);
+        scores.put(Category.LARGESTRAIGHT, -1);
+        scores.put(Category.YAHTZEE, -1);
+        scores.put(Category.CHANCE, -1);
     }
 
     public void setScore(Category category, int score){
         scores.put(category, score);
     }
 
-    public void getScore(Category category){
-        scores.get(category);
+    public int getScore(Category category){
+        return scores.get(category);
     }
 
+    public LinkedHashMap<Category, Integer> getScores() { return scores; }
+
     public boolean isCardFull(){
-        return !scores.containsValue(null);
+        return !scores.containsValue(-1);
     }
 
     public void reset(){
