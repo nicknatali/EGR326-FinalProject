@@ -17,6 +17,8 @@ public abstract class View extends JPanel implements Observer {
 
     public abstract void update(Observable o, Object arg);
 
+    public abstract boolean setState();
+
     public void goAway(){
         game.deleteObserver(this);
     }

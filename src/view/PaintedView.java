@@ -20,4 +20,9 @@ public class PaintedView extends View{
 
     }
 
+    @Override
+    public boolean setState() {
+        return false;
+    }
+
 }

@@ -2,6 +2,7 @@ package model;
 
 import logic.ScoreLogic;
 import logic.Yahtzee;
+import strategy.StrategyType;
 import view.YahtzeeGUI;
 
 import java.util.LinkedHashMap;

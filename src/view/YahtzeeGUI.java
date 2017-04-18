@@ -78,6 +78,13 @@ public class YahtzeeGUI{
         frame.setVisible(true);
     }
 
+    public View getView() {
+        return view;
+    }
+
+    public void setView(View view) {
+        this.view = view;
+    }
 
 
     public void setupPlayerPanel(){
@@ -178,6 +185,7 @@ public class YahtzeeGUI{
         public void actionPerformed(ActionEvent e) {
             game.setStarted(true);
             game.resetGame();
+            game.setDiceRollState(true);
             game.rollDice();
             view.update(null, null);
             updateMessage();
@@ -202,6 +210,7 @@ public class YahtzeeGUI{
             message.append(winner == null ? "Its a draw!" : (winner.getName() + " wins!"));
             currMessage.setText(message.toString());
             updateWins();
+
         } else {
             currMessage.setText("It is " + game.getCurrPlayer().getName() + "'s turn!");
         }

@@ -3,16 +3,19 @@ package strategy;
 
 import model.Category;
 import model.Die;
+import model.YahtzeeGame;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class OneOfAKindStrategy extends Strategy{
     @Override
-    public Die[] rollStrategy(Die[] dice) {
+    public Die[] rollStrategy(YahtzeeGame game) {
         return new Die[0];
     }
 
     @Override
-    public Category categoryStrategy(HashMap<Category, Integer> validCategories) {
+    public ArrayList<Object> categoryStrategy(YahtzeeGame game) {
         return null;
     }
 }

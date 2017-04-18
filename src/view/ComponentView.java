@@ -2,6 +2,7 @@ package view;
 
 
 import model.Category;
+import model.Computer;
 import model.YahtzeeGame;
 
 import javax.imageio.ImageIO;
@@ -11,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Observable;
+import java.util.concurrent.TimeUnit;
 
 public class ComponentView extends View{
     /*
@@ -102,7 +104,7 @@ public class ComponentView extends View{
     }
 
 
-    private void setState(){
+    public boolean setState(){
         /*
             Set icon for dice depending on state
         */
@@ -150,6 +152,7 @@ public class ComponentView extends View{
                 p2Categories[i].setEnabled(false);
             }
         }
+        return true;
     }
 
 
@@ -211,11 +214,22 @@ public class ComponentView extends View{
             Category category = Category.fromInteger(categoryNum);
             game.getCurrPlayer().getScoreCard().setScore(category, game.getCurrScores().get(category));
             game.swapCurrentPlayer();
-            game.resetRerolls();
-            game.setDiceRollState(true);
-            game.rollDice();
-            game.getGui().updateMessage();
-            setState();
+            resetTurn();
+
+            if(game.getCurrPlayer() instanceof Computer){
+                ((Computer)game.getCurrPlayer()).makeMove(game);
+                game.swapCurrentPlayer();
+                resetTurn();
+            }
+
         }
+    }
+
+    private void resetTurn(){
+        game.resetRerolls();
+        game.setDiceRollState(true);
+        game.rollDice();
+        game.getGui().updateMessage();
+        setState();
     }
 }
