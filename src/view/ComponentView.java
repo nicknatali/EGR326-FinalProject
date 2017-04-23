@@ -205,7 +205,7 @@ public class ComponentView extends View{
     // This listener responds to clicks on the roll button.
     private class CategoryListener implements ActionListener {
         /**
-         * Called when a dice is clicked
+         * Called when a category is clicked
          */
         private int categoryNum;
         public CategoryListener(int categoryNum){ this.categoryNum = categoryNum; }

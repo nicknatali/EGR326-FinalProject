@@ -3,7 +3,9 @@ package view;
 
 import com.sun.tools.javac.comp.Lower;
 import model.Player;
+import model.ScoreCard;
 import model.YahtzeeGame;
+import util.PlayerFactory;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -177,19 +179,8 @@ public class YahtzeeGUI{
     private void handleEvents() {
         exitButton.addActionListener(e -> { System.exit(0); });
         newGameButton.addActionListener(new NewGameAction());
-    }
-
-
-    // This class handles "action events", aka mouse clicks, in buttons.
-    public class NewGameAction implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            game.setStarted(true);
-            game.resetGame();
-            game.setDiceRollState(true);
-            game.rollDice();
-            view.update(null, null);
-            updateMessage();
-        }
+        player1List.addActionListener(new ListAction(game.getPlayers()[0], 0));
+        player2List.addActionListener(new ListAction(game.getPlayers()[1], 1));
     }
 
 
@@ -222,5 +213,41 @@ public class YahtzeeGUI{
         player1LossesLabel.setText("Losses: " + game.getPlayers()[0].getLosses());
         player2WinsLabel.setText("Wins: " + game.getPlayers()[1].getWins());
         player2LossesLabel.setText("Losses: " + game.getPlayers()[1].getLosses());
+    }
+
+
+
+    // This class handles "action events", aka mouse clicks, in buttons.
+    public class NewGameAction implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            game.setStarted(true);
+            game.resetGame();
+            game.setDiceRollState(true);
+            game.rollDice();
+            view.update(null, null);
+            updateMessage();
+        }
+    }
+
+
+
+    // This class handles "action events", aka mouse clicks, in buttons.
+    public class ListAction implements ActionListener {
+        Player player;
+        int playerIndex;
+        public ListAction(Player player, int playerIndex){
+            this.player = player;
+            this.playerIndex = playerIndex;
+        }
+        public void actionPerformed(ActionEvent e) {
+            //Create new player based on selection
+            Player newPlayer = PlayerFactory.createPlayer((((JComboBox<String>)e.getSource()).getSelectedItem()).toString());
+            //Copy player passed in
+            newPlayer.copyPlayerAttributes(player);
+            //Set player passed in equal to new player
+            game.getPlayers()[playerIndex] = newPlayer;
+            //Start new game
+            if(game.isStarted()) newGameButton.doClick();
+        }
     }
 }

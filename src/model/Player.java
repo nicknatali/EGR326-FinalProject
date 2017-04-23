@@ -9,6 +9,15 @@ public abstract class Player {
     protected ScoreCard scoreCard = new ScoreCard();
 
 
+
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
+
+    public void setLosses(int losses) {
+        this.losses = losses;
+    }
+
     public int getWins() {
         return wins;
     }
@@ -73,5 +82,21 @@ public abstract class Player {
         points = 0;
         wins = 0;
         losses = 0;
+    }
+
+    public void copyPlayerAttributes(Player other){
+        //Get other players attributes
+        String name = other.getName();
+        int wins = other.getWins();
+        int losses = other.getLosses();
+        int points = other.getPoints();
+        boolean isTurn = other.isTurn();
+        ScoreCard scoreCard = other.getScoreCard();
+        //Copy player values
+        this.setName(name);
+        this.setPoints(points);
+        this.setWins(wins);
+        this.setLosses(losses);
+        this.setScoreCard(scoreCard);
     }
 }
