@@ -16,3 +16,6 @@ public class RandomStrategy extends Strategy{
         return null;
     }
 }
+
+//Let Rand choose dice to roll
+//Then let it randomly select a cattegory.
